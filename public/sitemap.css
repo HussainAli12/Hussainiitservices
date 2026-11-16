@@ -1,0 +1,219 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+@namespace "http://www.sitemaps.org/schemas/sitemap/0.9";
+@namespace image "http://www.google.com/schemas/sitemap-image/1.1";
+@namespace xhtml "http://www.w3.org/1999/xhtml";
+
+:root {
+  color-scheme: light;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100vw;
+  max-width: 100%;
+  margin: 0;
+  overflow-x: hidden;
+  background: #e7eef6;
+  color: #0f2744;
+  font-family: Poppins, "Segoe UI", sans-serif;
+  counter-reset: pages;
+  -webkit-font-smoothing: antialiased;
+}
+
+:root::before {
+  content: "Sitemap";
+  order: 0;
+  display: block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 32px 40px 4px 116px;
+  background: #0f2744 url("/logo.svg") 36px 28px / 56px 56px no-repeat;
+  color: #ffffff;
+  font-size: 42px;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+}
+
+:root::after {
+  content: "Every public page on Hussaini IT Services.\A Click an address to select it.\A Search engines read the XML.\A" counter(pages) " public URLs";
+  order: 1;
+  white-space: pre-wrap;
+  display: block;
+  box-sizing: border-box;
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  margin: 0;
+  padding: 10px 40px 26px 116px;
+  background: #0f2744;
+  border-bottom: 3px solid #b8963e;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+url {
+  order: 2;
+  counter-increment: pages;
+  counter-reset: images;
+  display: block;
+  position: relative;
+  box-sizing: border-box;
+  min-width: 0;
+  margin: 0 20px;
+  padding: 15px 28px 15px 72px;
+  background: #ffffff;
+  border-right: 1px solid rgba(15, 39, 68, 0.08);
+  border-bottom: 1px solid rgba(15, 39, 68, 0.06);
+  border-left: 1px solid rgba(15, 39, 68, 0.08);
+}
+
+url:first-of-type {
+  margin-top: 20px;
+  border-top: 1px solid rgba(15, 39, 68, 0.08);
+  border-radius: 14px 14px 0 0;
+}
+
+url:last-of-type {
+  border-radius: 0 0 14px 14px;
+  border-bottom-color: rgba(15, 39, 68, 0.08);
+  box-shadow: 0 18px 40px rgba(15, 39, 68, 0.06);
+}
+
+url::before {
+  content: counter(pages, decimal-leading-zero);
+  position: absolute;
+  left: 22px;
+  top: 17px;
+  color: #94a3b8;
+  font-size: 12px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+}
+
+url:hover {
+  background: #f8fafc;
+}
+
+loc {
+  display: block;
+  color: #1d4ed8;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+  cursor: copy;
+  user-select: all;
+}
+
+loc:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+lastmod,
+changefreq,
+priority {
+  display: inline;
+  color: #64748b;
+  font-size: 12.5px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+lastmod::before {
+  content: "Updated ";
+}
+
+changefreq {
+  text-transform: capitalize;
+}
+
+changefreq::before,
+priority::before {
+  content: "  ·  ";
+  text-transform: none;
+}
+
+priority::before {
+  content: "  ·  Priority ";
+}
+
+xhtml|link {
+  display: inline-block;
+  margin: 8px 6px 0 0;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(29, 78, 216, 0.08);
+  color: #1e3a5f;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+xhtml|link::before {
+  content: attr(hreflang);
+}
+
+image|image {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  counter-increment: images;
+}
+
+image|loc {
+  display: none;
+}
+
+image|image:last-of-type {
+  position: static;
+  display: block;
+  width: auto;
+  height: auto;
+  margin-top: 6px;
+  overflow: visible;
+  clip-path: none;
+}
+
+image|image:last-of-type::after {
+  content: counter(images) " images";
+  color: #94a3b8;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+@media (max-width: 640px) {
+  :root::before {
+    padding: 88px 20px 2px;
+    background-position: 20px 18px;
+    font-size: 34px;
+  }
+
+  :root::after {
+    padding: 8px 20px 22px;
+    font-size: 13px;
+  }
+
+  url {
+    margin-right: 12px;
+    margin-left: 12px;
+    padding: 14px;
+  }
+
+  url::before {
+    position: static;
+    display: block;
+    margin-bottom: 4px;
+  }
+}

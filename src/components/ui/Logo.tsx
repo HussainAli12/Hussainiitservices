@@ -1,0 +1,44 @@
+"use client";
+
+import Image from "next/image";
+import { cn } from "@/lib/utils";
+
+interface LogoProps {
+  className?: string;
+  showText?: boolean;
+  size?: "sm" | "md" | "lg";
+}
+
+const sizes = {
+  sm: { icon: 36, text: "text-base" },
+  md: { icon: 44, text: "text-lg" },
+  lg: { icon: 56, text: "text-xl" },
+};
+
+export function Logo({ className, showText = true, size = "md" }: LogoProps) {
+  const s = sizes[size];
+
+  return (
+    <div className={cn("flex items-center gap-3", className)}>
+      <Image
+        src="/logo.svg"
+        // Decorative when the wordmark is shown so the link name matches visible text.
+        alt={showText ? "" : "Hussaini IT Services logo"}
+        width={s.icon}
+        height={s.icon}
+        priority
+        className="shrink-0"
+      />
+      {showText && (
+        <div className="min-w-0">
+          <span className={cn("font-display font-bold tracking-tight text-foreground", s.text)}>
+            Hussaini
+          </span>
+          <span className="block text-[9px] font-medium uppercase tracking-[0.15em] text-slate-600 sm:text-[10px] sm:tracking-[0.2em]">
+            IT Services
+          </span>
+        </div>
+      )}
+    </div>
+  );
+}
